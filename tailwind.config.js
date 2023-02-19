@@ -9,6 +9,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
+            gridTemplateColumns: {
+                'event': 'repeat(auto-fill, minmax(300px, 1fr))',
+            }
         },
     },
     variants: {
@@ -33,5 +36,6 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
+        require('@tailwindcss/line-clamp'),
     ],
 }
