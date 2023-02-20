@@ -27,7 +27,7 @@
 
     <body>
         <x-navbar />
-        <main class="p-8">
+        <main class="p-2 md:p-8">
             {{ $slot }}
         </main>
     </body>

@@ -8,23 +8,23 @@
 
 <div class="flex flex-col space-y-1">
 
+    {{-- label if exists --}}
     @if (!is_null($label))
         <label
             class="block text-sm font-medium text-gray-700 dark:text-gray-400"
             for="{{ $id }}"
         >
             {{ $label }}
-            @if ($required)
-                <span class="text-red-500">*</span>
-            @endif
+
+            {{-- star red if required true --}}
+            @if ($required) <span class="text-red-500">*</span> @endif
         </label>
     @endif
 
-    <input
-        {{ $disabled ? 'disabled' : '' }}
-        {!! $attributes->merge(['class' => $classes]) !!}
-    >
+    {{-- input --}}
+    <input {!! $attributes->merge(['class' => $classes, 'disabled' => $disabled ?? '', 'id' => $id ?? '']) !!}>
 
+    {{-- error if exists --}}
     @error($id)
         <p class='text-sm text-red-600'>{{ $message }}</p>
     @enderror

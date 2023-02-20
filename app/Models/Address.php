@@ -24,4 +24,9 @@ class Address extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
