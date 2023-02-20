@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class TypeUserSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,10 @@ class TypeUserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('roles')->insert([
+            ['name' => 'Admin'],
+            ['name' => 'Organizador'],
+            ['name' => 'Participantes']
+        ]);
     }
 }
