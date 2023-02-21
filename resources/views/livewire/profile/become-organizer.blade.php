@@ -1,7 +1,7 @@
 <div class="border rounded-md">
     <x-card title="Tornar-se organizador">
-        <form class="flex flex-col space-y-4 items-end">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 w-full">
+        <form class="flex flex-col items-end space-y-4">
+            <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-3">
                 <x-form.input-image
                     wire:model="company.photo"
                     type="text"
@@ -83,7 +83,11 @@
                 />
             </div>
 
-            <x-button class="w-full sm:w-auto" primary label="Salvar"/>
+            <x-slot name="footer">
+                <div class="flex justify-end w-full">
+                    <x-button class="w-full sm:w-auto" primary label="Salvar"/>
+                </div>
+            </x-slot>
         </form>
     </x-card>
 </div>

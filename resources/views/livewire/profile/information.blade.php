@@ -1,47 +1,60 @@
-<div class="border rounded-lg">
-    <x-card title="Informações de perfil">
-        <form class="flex flex-col space-y-4 items-end">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 w-full">
+<div
+    class="rounded-lg border"
+    x-data
+>
+    <form
+        class="flex flex-col items-end space-y-4"
+        wire:submit.prevent="submit"
+    >
+        <x-card title="Informações de perfil">
+            <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-3">
 
-                <x-form.input-image
-                    wire:model="user.avatar"
-                    type="file"
-                    id="user.avatar"
-                    label="Foto de perfil"
-                    description="Insira uma imagem para seu perfil"
-                    :resource="$user->avatar"
-                    :required="false"
-                />
-
-                <div class="flex flex-col gap-2">
-                    <x-form.input
-                        wire:model="user.email"
-                        type="text"
-                        id="user.email"
-                        label="Email"
-                        placeholder="Seu email"
-                    />
-                    <x-form.input
-                        wire:model="user.name"
-                        type="text"
-                        id="user.name"
-                        label="Nome completo"
-                        placeholder="Seu nome completo"
+                <div class="row-span-2">
+                    <x-form.input-image
+                        wire:model="state.avatar"
+                        type="file"
+                        id="state.avatar"
+                        label="Foto de perfil"
+                        description="Insira uma imagem para seu perfil"
+                        :resource="$state['avatar']"
+                        :required="false"
                     />
                 </div>
-                <div class="flex flex-col gap-2">
+
+                <div class="grid md:grid-cols-2 gap-2 col-span-2">
                     <x-form.input
-                        wire:model="user.cpf"
+                        wire:model="state.email"
                         type="text"
-                        id="user.cpf"
+                        id="state.email"
+                        label="Email"
+                        placeholder="Seu email"
+                        maxlength="50"
+                    />
+                    <x-form.input
+                        wire:model="state.name"
+                        type="text"
+                        id="state.name"
+                        label="Nome completo"
+                        placeholder="Seu nome completo"
+                        maxlength="75"
+                    />
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-2 col-span-2">
+                    <x-form.input
+                        x-mask="999.999.999-99"
+                        wire:model="state.cpf"
+                        type="text"
+                        id="state.cpf"
                         label="CPF"
                         placeholder="Seu cpf"
                         :required="false"
                     />
                     <x-form.input
-                        wire:model="user.phone"
+                        x-mask="(99) 99999-9999"
+                        wire:model="state.phone"
                         type="tel"
-                        id="user.phone"
+                        id="state.phone"
                         label="Telefone"
                         placeholder="Seu telefone"
                         :required="false"
@@ -49,8 +62,17 @@
                 </div>
             </div>
 
-            <x-button class="w-full sm:w-auto" primary label="Salvar"/>
-        </form>
-    </x-card>
+            <x-slot name="footer">
+                <div class="flex w-full justify-end">
+                    <x-button
+                        type="submit"
+                        class="w-full sm:w-auto"
+                        primary
+                        label="Salvar"
+                    />
+                </div>
+            </x-slot>
+        </x-card>
+    </form>
 
 </div>

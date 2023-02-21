@@ -8,9 +8,9 @@
 
 <div class="flex flex-col space-y-1">
 
-    <div class="flex flex-col sm:flex-row flex-1 sm:space-x-8 justify-between md:justify-start">
+    <div class="flex flex-col justify-between flex-1 sm:flex-row sm:space-x-8 md:justify-start">
         <label
-            class="flex flex-col justify-center space-y-2 text-sm text-gray-700 dark:text-gray-400 tracking-widest transition ease-in-out duration-150"
+            class="flex flex-col justify-center space-y-2 text-sm tracking-widest text-gray-700 transition duration-150 ease-in-out dark:text-gray-400"
             for="{{ $id }}"
         >
             {{ $label }}
@@ -23,13 +23,11 @@
 
             <span class="text-xs text-gray-700">{{ $description }}</span>
 
-            <span class="outline-none inline-flex justify-center items-center group transition-all ease-in duration-150 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2     ring-primary-500 text-white bg-primary-500 hover:bg-primary-600 hover:ring-primary-600
-            dark:ring-offset-slate-800 dark:bg-primary-700 dark:ring-primary-700
-            dark:hover:bg-primary-600 dark:hover:ring-primary-600 cursor-pointer">Selecione uma foto</span>
+            <span class="inline-flex items-center justify-center px-4 py-2 text-sm text-white transition-all duration-150 ease-in rounded outline-none cursor-pointer group focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed gap-x-2 ring-primary-500 bg-primary-500 hover:bg-primary-600 hover:ring-primary-600 dark:ring-offset-slate-800 dark:bg-primary-700 dark:ring-primary-700 dark:hover:bg-primary-600 dark:hover:ring-primary-600">Selecione uma foto</span>
         </label>
 
         <div
-            class="relative order-first mx-auto my-2 sm:m-2 flex h-28 w-28 items-center justify-center rounded-lg border border-dashed border-gray-400 bg-cover bg-center bg-no-repeat bg-origin-padding md:order-last">
+            class="relative flex items-center justify-center order-first mx-auto my-2 bg-center bg-no-repeat bg-cover border border-gray-400 border-dashed rounded-lg sm:m-2 h-28 w-28 bg-origin-padding md:order-last">
             @if (is_null($resource))
                 <span class="text-gray-400 opacity-75">
                     <svg

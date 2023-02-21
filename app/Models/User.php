@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,6 +18,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
+        'phone',
+        'cpf',
         'role_id',
         'password',
     ];
@@ -29,6 +33,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cpf(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => getOnlyNumbers($value),
+            get: fn ($value) => formatToCpf($value),
+        );
+    }
 
     public function isAdmin(): bool
     {

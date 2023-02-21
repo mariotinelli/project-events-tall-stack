@@ -30,5 +30,7 @@
         <main class="p-2 md:p-8">
             {{ $slot }}
         </main>
+
+        @stack('scripts')
     </body>
 </html>
