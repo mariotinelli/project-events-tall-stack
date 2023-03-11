@@ -1,11 +1,11 @@
-<nav class="relative mx-auto flex h-20 w-full items-center justify-between bg-neutral-400 px-8 shadow-sm shadow-black">
+<nav class="relative sticky top-0 z-20 flex items-center justify-between w-full h-20 px-8 bg-white shadow">
 
     {{-- logo --}}
     <a
         href="{{ route('home') }}"
-        class="align-items my-auto flex justify-center"
+        class="flex justify-center my-auto align-items"
     >
-        <x-logo class="h-8 w-8" />
+        <x-logo class="w-8 h-8" />
     </a>
 
     {{-- dropdown --}}

@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @hasSection('title')
-
             <title>@yield('title') - {{ config('app.name') }}</title>
         @else
             <title>{{ config('app.name') }}</title>
@@ -16,6 +15,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+        @toastScripts
         @wireUiScripts
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         @livewireStyles
@@ -26,8 +26,10 @@
     </head>
 
     <body>
+        <livewire:toasts />
         <x-navbar />
-        <main class="p-2 md:p-8">
+
+        <main class="min-h-screen p-2 md:p-8 bg-slate-100">
             {{ $slot }}
         </main>
 

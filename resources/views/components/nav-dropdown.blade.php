@@ -1,6 +1,6 @@
 <x-dropdown>
     <x-slot name="trigger">
-        <x-avatar lg />
+        <x-avatar lg class="text-black border border-2" />
     </x-slot>
 
     <div class="flex flex-col">

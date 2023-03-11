@@ -4,13 +4,15 @@ namespace App\Http\Livewire\Profile;
 
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Usernotnull\Toast\Concerns\WireToast;
 
 class Information extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WireToast;
 
     public User $user;
     public array $state = [
@@ -33,7 +35,7 @@ class Information extends Component
     }
 
     protected array $validationAttributes = [
-        'state.avatar' => 'foto',
+        'state.avatar' => 'foto de perfil',
         'state.email' => 'email',
         'state.name' => 'nome completo',
         'state.phone' => 'telefone',
@@ -43,6 +45,19 @@ class Information extends Component
     public function submit()
     {
         $this->validate();
+
+        if ($this->user->avatar && ($this->state['avatar'] != asset("storage/{$this->user->avatar}"))) {
+            Storage::delete($this->user->avatar);
+        }
+
+        $path = Storage::put("users/{$this->user->id}/avatar", $this->state['avatar'], 'public');
+
+        $this->state['avatar'] = $path;
+
+        $this->user->update($this->state);
+
+        toast()->success('Informações de perfil salvas com sucesso.', 'Perfil')
+            ->push();
     }
 
     private function initVariables(User $user): void
